@@ -11,6 +11,9 @@ ul {
   padding: 0;
   color: white;
 }
+main {
+  background: url('img/left_back_image.png') no-repeat top left, url('img/right_back_image.png') no-repeat top right, url('img/bottom-left-image.png') no-repeat bottom left, url('img/bottom-right-image.png') no-repeat bottom right;
+}
                                               /* Header*/
 header {
   max-width: 1170px;
@@ -204,12 +207,14 @@ top: 120px;
   height: 250px;
   padding-top: 25px;
   border: 1px solid #323232;
+  border-right: none;
   color: white;
   font-family: "Montserrat";
   font-size: 22px;
   text-align: center;
-  margin-left: -1px;
-  margin-top: -1px;
+}
+.items div:nth-child(5n) {
+  border-right: 1px solid #323232;
 }
 .items div a  {
   position: absolute;
