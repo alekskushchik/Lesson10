@@ -255,7 +255,7 @@ top: 80px;
   display: block;
   text-align: center;
 }
-.news div span:nth-child(2)  { /* News name */
+.news-list article span:nth-child(2)  { /* News name */
   color: #fff;
   font-family: "Montserrat";
   font-size: 18px;
@@ -264,20 +264,38 @@ top: 80px;
   display: block;
   padding-bottom: 17px;
 }
-.news div time:nth-child(3) {
+.news-list article time:nth-child(3) {
   font-size: 13px;
   line-height: 18px;
   color: white;
 }
-.news div span:nth-child(4)  { /* News details */
+.news-list article span:nth-child(4)  { /* News details */
   color: #fff;
   font-family: "Montserrat";
   font-size: 13px;
   font-weight: 300;
   text-align: left;
   line-height: 18px;
-  display: block;
+  margin-top: 13px;
   padding-top: 17px;
+  display: block
+}
+.news-list article time {
+  color: white;
+  font-family: "Montserrat";
+  font-size: 13px;
+  line-height: 16px;
+  position: absolute;
+  margin-left: 20px;
+}
+.news-list article time::before {
+content: '';
+width: 13px;
+height: 14px;
+background: url(img/calendar.png) no-repeat center center;
+position: absolute;
+left: -20px;
+top: 2px;
 }
 .show-news-button {
   color: white;
@@ -297,36 +315,28 @@ top: 80px;
   box-shadow: 4px 3.464px 32px 3px rgba(243, 33, 33, 0.64);
   transition: box-shadow 1s ease-out;
 }
-.news {
+.news-list article:first-child {
+  max-width: 49%;
+  float: left;
+  margin-right: 2%;
+}
+.news-list article:nth-child(2) {
+  padding-bottom: 14px;
+}
+.news-list article:first-child img {
+  display: block;
+  margin-bottom: 16px;
   width: 100%;
 }
-.main {
-  max-width: 48%;
+.news-list article:nth-child(2), .news-list article:nth-child(3)  {
+  max-width: 49%;
   float: left;
-  display: block;
-  margin-right: 16px;
+  margin-bottom: 10px;
 }
-.another {
-  max-width: 48%;
+article:nth-child(2) img, article:nth-child(3) img {
   float: left;
-  margin-left: 16px;  
-  margin-bottom: 16px;
-}
-.main div img:first-child  {
-  display: block;
-  width: 100%;
-  margin-bottom: 16px;
-}
-.another div img:first-child {
-  float: left;
-  width: 50%;
   margin-right: 32px;
-}
-.news div time {
-  color: white;
-  font-family: "Montserrat";
-  font-size: 13px;
-  line-height: 16px;
+  width: 50%;
 }
 .clear {
   display: block;
@@ -398,26 +408,32 @@ address {
   line-height: 28px;
   text-decoration: none;
 }
-
 @media screen and (max-width: 1185px) {
   .footer-container {
     display: flex;
     justify-content: space-between;
   }
-  .logo-footer, address, .contacts-footer {
-    max-width: 390px;
+  header {
+    height: 100%;
+    padding-bottom: 15px;
   }
-  .logo {
-    margin-right: 34px;
+  .main-menu {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .main-menu ul li {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .social {
+    display: block;
   }
   .contacts {
-    position: absolute;
-    top: 40px;
-    left: 250px;
+    display: block;
   }
-  header {
-    height: 120px;
-  }
+  
+  
 }
 @media screen and (max-width: 1165px) {
   .items div:nth-child(4n) {
@@ -427,18 +443,9 @@ address {
     border-right: none;
   }
 }
+
 @media screen and (max-width: 935px) {
-  header {
-    height: 150px;
-  }
-  .social {
-    position: absolute;
-    top: 65px;
-    right: 0;
-  }
-  .social ul li {
-    margin-top: 50px;
-  }
+  
   .items div:nth-child(3n) {
     border-right: 1px solid #323232;
   }
@@ -446,29 +453,26 @@ address {
     border-right: none;
   }
 }
-@media screen and (max-width: 850px) {
-  .news-container {
-    display: block;
-    margin: 0 auto;
-  }
-  .news {
+
+@media screen and (max-width: 800px) {
+  .footer-container {
+    float: none;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
   }
-}
-@media screen and (max-width: 800px) {
   .contacts-footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .middle-footer {
+    margin: 0;
+    padding: 0;
   }
 }
-@media screen and (max-width: 740px) {
-  .main-menu ul li {
-    margin: 38px 10px 0;
-  }
-}
+
 @media screen and (max-width: 700px) {
   .footer-container {
     float: none;
@@ -480,12 +484,34 @@ address {
     border-right: none;
   }
 }
-@media screen and (max-width: 630px){
-  .contacts {
-    display: none;
+@media screen and (max-width: 650px){
+  .main-menu {
+    padding-bottom: 5px;
+  }
+  .main-menu ul li {
+    float: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
   }
 }
+
+@media screen and (max-width: 630px){
+  .news-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .news-list article:first-child, .news-list article:nth-child(2),
+  .news-list article:nth-child(3) {
+    max-width: 90%;
+    margin: 0 auto;
+ }
+}
+
 @media screen and (max-width: 470px) {
+  .items {
+    margin: 0 auto;
+  }
   .items div:nth-child(n) {
     border-right: 1px solid #323232;
   } 
